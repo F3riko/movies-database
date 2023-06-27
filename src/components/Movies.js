@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Gallery from "./Gallery";
 
-const Movie = () => {
+function Movie() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -22,13 +23,9 @@ const Movie = () => {
   return (
     <div>
       <h1>Movies</h1>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
+      <Gallery movies={movies} />
     </div>
   );
-};
+}
 
 export default Movie;
