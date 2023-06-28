@@ -1,20 +1,21 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Gallery({ movies }) {
   return (
     <div className="container">
       <div className="row">
         {movies.map((movie) => (
-          <div class="card" style={{ width: "18rem" }}>
+          <div className="card" style={{ width: "10rem" }}>
             <img
-              class="card-img-top"
+              className="card-img-top"
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt="Card image cap"
             />
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+            <div className="card-body">
+              <p classNamen="card-text">
+                Some info about the film
+                {/* Integrate API here later */}
               </p>
             </div>
           </div>
