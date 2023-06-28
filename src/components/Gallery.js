@@ -4,8 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function Gallery({ movies, type }) {
   return (
-    <div className="container d-flex p-3 text-center" style={{overflowX: "auto"}}>
-      <div className='d-flex flex-row'>
+    <div
+      className="container d-flex p-3 text-center"
+      style={{ overflowX: "auto" }}
+    >
+      <div className="d-flex flex-row">
         {movies.map((movie) => (
           <div className="col-md-3 mb-3 card-container-movie" key={movie.id}>
             <Link to={`/${type}/${movie.id}`}>
@@ -16,7 +19,9 @@ function Gallery({ movies, type }) {
                   alt="Card cap"
                 />
                 <div className="card-body">
-                  <p className="card-text">{movie.title}</p>
+                  <p className="card-text">
+                    {type === "tv" ? movie.name : movie.title}
+                  </p>
                 </div>
               </div>
             </Link>
