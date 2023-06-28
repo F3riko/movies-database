@@ -1,18 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Movies from "./components/Movies";
+import Movies from "./components/ContentPage";
 import MovieComponent from "./components/MovieComponent";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Movies />} />
-          <Route path="/movie/:movieId" element={<MovieComponent />} />
+          <Route path="/" element={<Movies type={"movie"} />} />
+          <Route path="/:type/:movieId" element={<MovieComponent />} />
           <Route path="*" element={<h1>404 Page Not Found</h1>} />
+          <Route path="/tv" element={<Movies type={"tv"} />} /> 
         </Routes>
       </div>
     </Router>

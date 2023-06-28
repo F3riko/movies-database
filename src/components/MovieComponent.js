@@ -4,13 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const MovieComponent = () => {
   const [movie, setMovie] = useState([]);
-  const { movieId } = useParams();
+  const { movieId, type } = useParams();
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=54afa970f66b8f17236a011ce7bf1603`
+          `https://api.themoviedb.org/3/${type}/${movieId}?api_key=54afa970f66b8f17236a011ce7bf1603`
         );
         const data = await response.json();
         setMovie(data);
@@ -20,7 +20,7 @@ const MovieComponent = () => {
     };
 
     fetchMovie();
-  }, [movieId]);
+  }, [movieId, type]);
 
   const { title, overview, poster_path, release_date, vote_average, runtime } =
     movie;

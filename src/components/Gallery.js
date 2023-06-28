@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Gallery({ movies }) {
+function Gallery({ movies, type }) {
   return (
     <div className="container">
       <div className="row">
         {movies.map((movie) => (
           <div className="col-md-3 mb-3" key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
+            <Link to={`/${type}/${movie.id}`}>
               <div className="card">
                 <img
                   className="card-img-top"
