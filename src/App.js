@@ -5,8 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    // <Movies />
-    <MovieComponent movieId={255} />
+    <Movies />
   );
 }
 
