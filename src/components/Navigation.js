@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ handleSearchQuery }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
-      window.location.href = `/search/${searchQuery}`;
+      handleSearchQuery(searchQuery);
     }
   };
 
@@ -16,9 +16,7 @@ const Navigation = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="navbar-brand">
-        F Y M - find your movie!
-      </div>
+      <div className="navbar-brand">F Y M - find your movie!</div>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -32,7 +30,10 @@ const Navigation = () => {
             </Link>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0" onSubmit={(e) => e.preventDefault()}>
+        <form
+          className="form-inline my-2 my-lg-0"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <div className="input-group">
             <input
               className="form-control"

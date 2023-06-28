@@ -6,6 +6,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function ContentPage({ type }) {
   const [movies, setMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchQuery = (query) => {
+    setSearchQuery(query);
+  };
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/${type}?api_key=54afa970f66b8f17236a011ce7bf1603&query=${searchQuery}`
+        );
+        const data = await response.json();
+        setSearchMovies(data.results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovies();
+  }, [searchQuery]);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -21,16 +43,18 @@ function ContentPage({ type }) {
     };
 
     fetchMovies();
+    setSearchMovies([]);
   }, [type]);
 
   return (
     <div>
-      {/* <h1>{`${type.charAt(0).toUpperCase()}${type.slice(1)}`}</h1> */}
-      <Navigation />
+      <Navigation handleSearchQuery={handleSearchQuery} />
       <Gallery type={type} movies={movies} />
-      {movies.map((movie) => {
-        return <ContentPreview movie={movie} type={type}/>;
-      })}
+      {searchMovies.length === 0
+        ? movies.map((movie) => <ContentPreview movie={movie} type={type} />)
+        : searchMovies.map((movie) => (
+            <ContentPreview movie={movie} type={type} />
+          ))}
     </div>
   );
 }

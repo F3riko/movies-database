@@ -6,6 +6,7 @@ const MovieComponent = () => {
   const [movie, setMovie] = useState([]);
   const { movieId, type } = useParams();
 
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {

@@ -23,7 +23,7 @@ const ContentPreview = ({ movie, type }) => {
               <p className="card-text">
                 Rating: {vote_average}/10
               </p>
-              <Link to={`${type}/${id}`} className="btn btn-primary">
+              <Link to={`/${type}/${id}`} className="btn btn-primary">
                 View Details
               </Link>
             </div>
