@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const MovieComponent = ({ movieId }) => {
+const MovieComponent = () => {
   const [movie, setMovie] = useState([]);
+  const { movieId } = useParams();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -19,7 +22,8 @@ const MovieComponent = ({ movieId }) => {
     fetchMovie();
   }, [movieId]);
 
-  const { title, overview, poster_path, release_date, vote_average, runtime } = movie;
+  const { title, overview, poster_path, release_date, vote_average, runtime } =
+    movie;
 
   return (
     <div className="container">

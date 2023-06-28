@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Gallery from "./Gallery";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Movie() {
   const [movies, setMovies] = useState([]);
