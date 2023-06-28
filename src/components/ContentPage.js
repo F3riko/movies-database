@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Gallery from "./Gallery";
 import ContentPreview from "./ContentPreview";
+import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Movie({ type }) {
+function ContentPage({ type }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -20,11 +21,12 @@ function Movie({ type }) {
     };
 
     fetchMovies();
-  }, []);
+  }, [type]);
 
   return (
     <div>
-      <h1>{`${type.charAt(0).toUpperCase()}${type.slice(1)}`}</h1>
+      {/* <h1>{`${type.charAt(0).toUpperCase()}${type.slice(1)}`}</h1> */}
+      <Navigation />
       <Gallery type={type} movies={movies} />
       {movies.map((movie) => {
         return <ContentPreview movie={movie} type={type}/>;
@@ -33,4 +35,4 @@ function Movie({ type }) {
   );
 }
 
-export default Movie;
+export default ContentPage;
