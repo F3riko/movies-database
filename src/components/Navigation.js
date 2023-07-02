@@ -7,6 +7,7 @@ const Navigation = ({ handleSearchQuery }) => {
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
       handleSearchQuery(searchQuery);
+      setSearchQuery("")
     }
   };
 

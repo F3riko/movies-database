@@ -27,7 +27,7 @@ function ContentPage({ type }) {
     };
 
     fetchMovies();
-  }, [searchQuery]);
+  }, [searchQuery, type]);
 
   useEffect(() => {
     const fetchMovies = async () => {

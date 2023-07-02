@@ -18,7 +18,7 @@ const ContentPreview = ({ movie, type }) => {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{title}</h5>
+              <h5 className="card-title">{type === "tv" ? movie.name : movie.title}</h5>
               <p className="card-text">{overview}</p>
               <p className="card-text">
                 Rating: {vote_average}/10
