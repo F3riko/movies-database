@@ -71,7 +71,9 @@ function ContentPage({ type }) {
           ))
         )
       ) : filteredMovies[0] === false ? (
-        <h1>Nothing found</h1>
+        <div className="alert alert-secondary" role="alert">
+          <h1 className="text-center">Nothing found</h1>
+        </div>
       ) : (
         filteredMovies.map((movie) => (
           <ContentPreview movie={movie} type={type} />
