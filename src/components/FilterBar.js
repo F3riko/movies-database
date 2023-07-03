@@ -71,8 +71,8 @@ const FilterBar = ({ type, moviesToFilter, setMoviesAfterFilter }) => {
   };
 
   return (
-    <div className="container">
-      <div className="row p-5 align-items-center">
+    <div className="container-fluid bg-light">
+      <div className="row p-4 align-items-center">
         <div className="col">
           <div className="form-group text-center">
             <label htmlFor="genre">Genre</label>

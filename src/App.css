@@ -6,3 +6,13 @@
 .card-container-movie {
   width: 200px;
 }
+
+.card-text {
+  height: 50px;
+  text-decoration: none;
+}
+
+
+.navbar-brand {
+  margin-left: 18px;
+}
