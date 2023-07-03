@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Gallery from "./Gallery";
 import ContentPreview from "./ContentPreview";
 import Navigation from "./Navigation";
+import FilterBar from "./FilterBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function ContentPage({ type }) {
   const [movies, setMovies] = useState([]);
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   const handleSearchQuery = (query) => {
     setSearchQuery(query);
@@ -43,18 +45,38 @@ function ContentPage({ type }) {
     };
 
     fetchMovies();
+    setSearchQuery("");
     setSearchMovies([]);
+    setFilteredMovies([]);
   }, [type]);
 
   return (
     <div>
       <Navigation handleSearchQuery={handleSearchQuery} />
+
       <Gallery type={type} movies={movies} />
-      {searchMovies.length === 0
-        ? movies.map((movie) => <ContentPreview movie={movie} type={type} />)
-        : searchMovies.map((movie) => (
+
+      <FilterBar
+        type={type}
+        setMoviesAfterFilter={setFilteredMovies}
+        moviesToFilter={searchMovies.length === 0 ? movies : searchMovies}
+      />
+
+      {filteredMovies.length === 0 ? (
+        searchMovies.length === 0 ? (
+          movies.map((movie) => <ContentPreview movie={movie} type={type} />)
+        ) : (
+          searchMovies.map((movie) => (
             <ContentPreview movie={movie} type={type} />
-          ))}
+          ))
+        )
+      ) : filteredMovies[0] === false ? (
+        <h1>Nothing found</h1>
+      ) : (
+        filteredMovies.map((movie) => (
+          <ContentPreview movie={movie} type={type} />
+        ))
+      )}
     </div>
   );
 }
