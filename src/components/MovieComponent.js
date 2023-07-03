@@ -27,7 +27,7 @@ const MovieComponent = () => {
           `https://api.themoviedb.org/3/${type}/${movieId}/credits?api_key=54afa970f66b8f17236a011ce7bf1603`
         );
         const castData = await castResponse.json();
-        setCast(castData.cast.slice(0, 10));
+        setCast(castData.cast.slice(0, 6));
       } catch (error) {
         console.log(error);
       }
@@ -48,7 +48,7 @@ const MovieComponent = () => {
     movie;
 
   return (
-    <div className="container">
+    <div className="container bg-light mt-3">
       <div className="row">
         <div className="col-md-4">
           <img
@@ -71,7 +71,7 @@ const MovieComponent = () => {
           </p>
         </div>
       </div>
-      <h3>Cast</h3>
+      <h3 className="text-center m-2">Cast</h3>
       <div className="row">
         {cast.map((actor) => (
           actor.profile_path && (
@@ -79,14 +79,14 @@ const MovieComponent = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
                 alt={actor.name}
-                className="img-fluid rounded-circle"
+                className="img-fluid"
               />
-              <p>{actor.name}</p>
+              <p className="text-center m-2">{actor.name}</p>
             </div>
           )
         ))}
       </div>
-      <h3>Trailers</h3>
+      <h3 className="text-center m-2">Trailers</h3>
       <ul className="list-group">
         {trailers.map((trailer) => (
           <li key={trailer.key} className="list-group-item">
@@ -94,6 +94,7 @@ const MovieComponent = () => {
               href={`https://www.youtube.com/watch?v=${trailer.key}`}
               target="_blank"
               rel="noopener noreferrer"
+              className="text-decoration-none"
             >
               {trailer.name}
             </a>
