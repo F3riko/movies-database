@@ -12,7 +12,10 @@
   text-decoration: none;
 }
 
-
 .navbar-brand {
   margin-left: 18px;
+}
+
+.card-text-custom {
+  height: 250px;
 }
