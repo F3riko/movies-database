@@ -10,7 +10,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<ContentPage type="movie" />} />
+          <Route path="/movies" element={<ContentPage type="movie" />} />
           <Route path="/tv" element={<ContentPage type="tv" />} />
           <Route path="/:type/:movieId" element={<MovieComponent />} />
           <Route path="*" element={<h1>404 Page Not Found</h1>} />

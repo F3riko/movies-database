@@ -21,7 +21,7 @@ const Navigation = ({ handleSearchQuery }) => {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/movies">
               Movies
             </Link>
           </li>
