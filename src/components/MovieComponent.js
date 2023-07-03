@@ -27,7 +27,7 @@ const MovieComponent = () => {
           `https://api.themoviedb.org/3/${type}/${movieId}/credits?api_key=54afa970f66b8f17236a011ce7bf1603`
         );
         const castData = await castResponse.json();
-        setCast(castData.cast.slice(0, 6));
+        setCast(castData.cast.slice(0, 10));
       } catch (error) {
         console.log(error);
       }
@@ -36,11 +36,19 @@ const MovieComponent = () => {
     fetchData();
   }, [movieId, type]);
 
+  if (!movie) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (Object.keys(movie).length === 0) {
+    return <h1>Not found</h1>;
+  }
+
   const { title, overview, poster_path, release_date, vote_average, runtime } =
     movie;
 
   return (
-    <div className="container mt-3 bg-light">
+    <div className="container">
       <div className="row">
         <div className="col-md-4">
           <img
@@ -63,7 +71,7 @@ const MovieComponent = () => {
           </p>
         </div>
       </div>
-      <h3 className="text-center m-2">Cast</h3>
+      <h3>Cast</h3>
       <div className="row">
         {cast.map((actor) => (
           actor.profile_path && (
@@ -71,14 +79,14 @@ const MovieComponent = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
                 alt={actor.name}
-                className="img-fluid"
+                className="img-fluid rounded-circle"
               />
-              <p className="text-center">{actor.name}</p>
+              <p>{actor.name}</p>
             </div>
           )
         ))}
       </div>
-      <h3 className="text-center m-2">Trailers</h3>
+      <h3>Trailers</h3>
       <ul className="list-group">
         {trailers.map((trailer) => (
           <li key={trailer.key} className="list-group-item">
@@ -97,3 +105,4 @@ const MovieComponent = () => {
 };
 
 export default MovieComponent;
+  
